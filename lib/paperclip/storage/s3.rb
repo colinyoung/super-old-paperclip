@@ -79,6 +79,7 @@ module Paperclip
             @url           = ":s3_path_url"
           end
           AWS::S3::Base.establish_connection!( @s3_options.merge(
+            :server => @s3_credentials[:server] || 's3.amazonaws.com',
             :access_key_id => @s3_credentials[:access_key_id],
             :secret_access_key => @s3_credentials[:secret_access_key]
           ))
